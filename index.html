@@ -47,17 +47,13 @@ padding:90px 20px 40px;
 .hero p{opacity:.9}
 
 /* CTA */
-.cta{
-margin-top:25px;
-}
+.cta{margin-top:25px}
 button{
 padding:14px 40px;
-border:none;
-border-radius:30px;
+border:none;border-radius:30px;
 background:#ffeb3b;
 font-size:18px;
-cursor:pointer;
-font-weight:bold;
+cursor:pointer;font-weight:bold;
 box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
 
@@ -77,14 +73,10 @@ text-align:center;
 .cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-margin-top:20px;
+gap:20px;margin-top:20px;
 }
 .card{
-background:white;
-color:#222;
-padding:25px;
-border-radius:20px;
+background:white;color:#222;padding:25px;border-radius:20px;
 box-shadow:0 10px 20px rgba(0,0,0,.25);
 transition:.3s;
 }
@@ -92,26 +84,36 @@ transition:.3s;
 
 /* Stats */
 .stats{
-display:flex;
-justify-content:center;
-gap:25px;
-margin-top:20px;
-flex-wrap:wrap;
+display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;
 }
 .stat{
 background:rgba(255,255,255,.25);
-padding:12px 25px;
-border-radius:20px;
+padding:12px 25px;border-radius:20px;
 }
 
 /* Footer */
-footer{
-text-align:center;
-padding:20px;
-opacity:.8;
+footer{text-align:center;padding:20px;opacity:.8}
+
+/* Welcome Popup */
+#welcomeBox{
+position:fixed;inset:0;
+background:rgba(0,0,0,.6);
+display:flex;justify-content:center;align-items:center;
+z-index:999;
+}
+.popup{
+background:white;color:#222;padding:30px;border-radius:25px;text-align:center;width:300px;
+box-shadow:0 10px 25px rgba(0,0,0,.4);animation:pop .4s ease;
+}
+@keyframes pop{
+from{transform:scale(.7);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+.popup button{
+margin-top:15px;padding:10px 25px;border:none;border-radius:20px;
+background:#43cea2;color:white;cursor:pointer;
 }
 </style>
-
 </head>
 
 <body>
@@ -134,11 +136,8 @@ opacity:.8;
 <div class="hero">
 <h1>Helping Farmers With Technology</h1>
 <p>Crop • Weather • Fertilizer • Market</p>
-
 <div class="cta">
-<a href="dashboard.html">
-<button>🚀 Get Started</button>
-</a>
+<a href="dashboard.html"><button>🚀 Get Started</button></a>
 </div>
 </div>
 
@@ -154,7 +153,6 @@ opacity:.8;
 <br>
 
 <h2>Our Services</h2>
-
 <div class="cards">
 <div class="card">🌱 Crop Suggestion</div>
 <div class="card">☁ Weather Info</div>
@@ -163,9 +161,23 @@ opacity:.8;
 </div>
 </div>
 
-<footer>
-© 2026 Smart Agriculture Project
-</footer>
+<footer>© 2026 Smart Agriculture Project</footer>
+
+<!-- Welcome Popup -->
+<div id="welcomeBox">
+  <div class="popup">
+    <h2>🌾 Welcome!</h2>
+    <p>Smart Agriculture System</p>
+    <p>Grow Smart • Farm Smart 🌱</p>
+    <button onclick="closePop()">Enter</button>
+  </div>
+</div>
+
+<script>
+function closePop(){
+document.getElementById("welcomeBox").style.display="none";
+}
+</script>
 
 </body>
 </html>
