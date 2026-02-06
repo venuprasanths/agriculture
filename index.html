@@ -4,85 +4,156 @@
 <title>Smart Agriculture</title>
 
 <style>
+*{box-sizing:border-box}
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(to right,#43cea2,#185a9d);
-}
-
-header{
-background:#1b5e20;
+font-family:Segoe UI,Arial;
+background:linear-gradient(135deg,#43cea2,#185a9d);
+min-height:100vh;
 color:white;
-padding:20px;
-text-align:center;
+overflow-x:hidden;
 }
 
+/* Floating icons */
+.icon{
+position:absolute;
+font-size:30px;
+opacity:.6;
+animation:float 12s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+/* Navbar */
+nav{
+background:rgba(0,0,0,.3);
+padding:14px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(10px);
+position:sticky;top:0;z-index:10;
+}
+nav a{color:white;text-decoration:none;font-weight:bold;margin-left:15px}
+
+/* Hero */
 .hero{
 text-align:center;
-color:white;
-padding:80px 20px;
+padding:90px 20px 40px;
 }
+.hero h1{font-size:48px;margin-bottom:10px}
+.hero p{opacity:.9}
 
-.hero h1{font-size:45px;}
-
+/* CTA */
+.cta{
+margin-top:25px;
+}
 button{
-padding:12px 30px;
+padding:14px 40px;
 border:none;
+border-radius:30px;
 background:#ffeb3b;
-border-radius:25px;
-font-size:16px;
+font-size:18px;
 cursor:pointer;
+font-weight:bold;
+box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
 
+/* Glass section */
 .section{
-background:white;
-margin:30px;
+max-width:1000px;
+margin:30px auto;
 padding:30px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+background:rgba(255,255,255,.2);
+border-radius:25px;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+text-align:center;
 }
 
+/* Cards */
 .cards{
-display:flex;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:20px;
+margin-top:20px;
+}
+.card{
+background:white;
+color:#222;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.25);
+transition:.3s;
+}
+.card:hover{transform:translateY(-10px)}
+
+/* Stats */
+.stats{
+display:flex;
 justify-content:center;
+gap:25px;
+margin-top:20px;
 flex-wrap:wrap;
 }
-
-.card{
-background:#e8f5e9;
-padding:25px;
-border-radius:15px;
-width:180px;
-text-align:center;
+.stat{
+background:rgba(255,255,255,.25);
+padding:12px 25px;
+border-radius:20px;
 }
 
+/* Footer */
 footer{
-background:#1b5e20;
-color:white;
 text-align:center;
-padding:15px;
+padding:20px;
+opacity:.8;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-<h2>🌾 Smart Agriculture System</h2>
-</header>
+<!-- Floating icons -->
+<div class="icon" style="left:10%;animation-duration:9s">🌾</div>
+<div class="icon" style="left:30%;animation-duration:11s">💧</div>
+<div class="icon" style="left:60%;animation-duration:10s">☁</div>
+<div class="icon" style="left:80%;animation-duration:12s">🌱</div>
+
+<nav>
+<div>🌾 Smart Agriculture</div>
+<div>
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="features.html">Features</a>
+</div>
+</nav>
 
 <div class="hero">
 <h1>Helping Farmers With Technology</h1>
 <p>Crop • Weather • Fertilizer • Market</p>
 
+<div class="cta">
 <a href="dashboard.html">
-<button>Get Started</button>
+<button>🚀 Get Started</button>
 </a>
+</div>
 </div>
 
 <div class="section">
-<h2 align="center">Our Services</h2>
+<h2>Why Smart Agriculture?</h2>
+
+<div class="stats">
+<div class="stat">🌾 Yield +25%</div>
+<div class="stat">💧 Water Save</div>
+<div class="stat">📈 Profit Boost</div>
+</div>
+
+<br>
+
+<h2>Our Services</h2>
 
 <div class="cards">
 <div class="card">🌱 Crop Suggestion</div>
