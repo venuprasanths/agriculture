@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Farmer Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#e8f5e9;
+}
+
+/* Header */
+header{
+background:#1b5e20;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* Welcome */
+.welcome{
+text-align:center;
+padding:30px;
+}
+
+/* Cards */
+.cards{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+width:200px;
+padding:25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+font-size:18px;
+}
+
+/* Tips */
+.tips{
+background:white;
+margin:30px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Button */
+button{
+padding:10px 20px;
+border:none;
+background:#1b5e20;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>🌾 Farmer Dashboard</h2>
+<a href="index.html">Logout</a>
+</header>
+
+<div class="welcome">
+<h2>Welcome Farmer 👨‍🌾</h2>
+<p>Your daily agriculture overview</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+🌾 Crop<br><b>Rice</b>
+</div>
+
+<div class="card">
+☁ Weather<br><b>Sunny</b>
+</div>
+
+<div class="card">
+🧪 Fertilizer<br><b>Urea</b>
+</div>
+
+<div class="card">
+📈 Market<br><b>₹45 / Kg</b>
+</div>
+
+</div>
+
+<div class="tips">
+<h3>🌱 Farming Tips</h3>
+<ul>
+<li>Water crops early morning</li>
+<li>Use organic fertilizer weekly</li>
+<li>Check pests regularly</li>
+<li>Harvest at correct season</li>
+</ul>
+
+<center>
+<button>Refresh Data</button>
+</center>
+</div>
+
+</body>
+</html>
