@@ -1,167 +1,202 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Smart Agriculture Features</title>
+<title>Innovation Features</title>
 
 <style>
+*{box-sizing:border-box}
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(to right,#43cea2,#185a9d);
-color:#333;
+font-family:Segoe UI,Arial;
+background:linear-gradient(135deg,#43cea2,#185a9d);
+min-height:100vh;
+color:white;
+overflow-x:hidden;
 }
 
-/* Header */
-header{
-background:#1b5e20;
-color:white;
-padding:15px;
-text-align:center;
+/* Navbar */
+nav{
+background:rgba(0,0,0,.3);
+padding:14px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(10px);
+position:sticky;top:0;
 }
+nav a{color:white;text-decoration:none;font-weight:bold}
 
 /* Container */
 .container{
-max-width:900px;
-margin:30px auto;
-background:white;
 padding:30px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+text-align:center;
+animation:fade .8s ease;
+}
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
-/* Sections */
-.section{
-margin-bottom:30px;
+/* Feature grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-top:30px;
 }
 
-h2{
-color:#1b5e20;
+/* Glass cards */
+.card{
+background:rgba(255,255,255,.2);
+padding:25px;
+border-radius:22px;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-10px) scale(1.02);
 }
 
-select,button{
+/* Inputs */
+select,input{
 padding:10px;
 border-radius:15px;
-border:1px solid #ccc;
+border:none;
+outline:none;
 margin-top:10px;
 }
 
+/* Buttons */
 button{
-background:#1b5e20;
-color:white;
+padding:10px 25px;
 border:none;
+border-radius:20px;
+background:#ffeb3b;
+font-weight:bold;
 cursor:pointer;
-}
-
-/* Result cards */
-.result{
-margin-top:15px;
-background:#e8f5e9;
-padding:15px;
-border-radius:15px;
-font-size:18px;
 }
 
 /* Water meter */
 .meter{
-background:#ddd;
+background:rgba(255,255,255,.4);
 border-radius:20px;
-overflow:hidden;
 height:20px;
 margin-top:10px;
+overflow:hidden;
 }
 .level{
-height:100%;
 width:70%;
-background:#4caf50;
+height:100%;
+background:#00e676;
+}
+
+/* Fake stats */
+.stats{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+}
+.stat{
+background:rgba(255,255,255,.2);
+padding:15px 25px;
+border-radius:20px;
+}
+
+.footerBtn{
+margin-top:40px;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-<h2>🌾 Smart Agriculture – Innovation Demo</h2>
-</header>
+<nav>
+<div>🚀 Innovation Features</div>
+<a href="dashboard.html">⬅ Dashboard</a>
+</nav>
 
 <div class="container">
 
-<!-- Crop Calendar -->
-<div class="section">
-<h2>📅 Crop Calendar</h2>
+<h1>Smart Farming Innovations 🌱</h1>
+<p>Modern tools for better agriculture</p>
 
-<select onchange="showCrop(this.value)">
-<option>Select Month</option>
-<option>January</option>
-<option>February</option>
-<option>March</option>
-<option>April</option>
-<option>May</option>
-<option>June</option>
-<option>July</option>
-<option>August</option>
-<option>September</option>
-<option>October</option>
-<option>November</option>
-<option>December</option>
-</select>
-
-<div id="cropResult" class="result">Choose a month</div>
+<!-- Fake stats -->
+<div class="stats">
+<div class="stat">🌾 Yield +25%</div>
+<div class="stat">💧 Water Save 30%</div>
+<div class="stat">📈 Profit Boost</div>
 </div>
 
-<!-- Soil Selector -->
-<div class="section">
-<h2>🌱 Soil Type Selector</h2>
+<div class="grid">
 
-<select onchange="soilResult(this.value)">
+<!-- Crop Calendar -->
+<div class="card">
+<h3>📅 Crop Calendar</h3>
+<select onchange="showCrop(this.value)">
+<option>Select Month</option>
+<option>Jan</option><option>Feb</option><option>Mar</option>
+<option>Apr</option><option>May</option><option>Jun</option>
+<option>Jul</option><option>Aug</option><option>Sep</option>
+<option>Oct</option><option>Nov</option><option>Dec</option>
+</select>
+<p id="cropOut"></p>
+</div>
+
+<!-- Soil -->
+<div class="card">
+<h3>🌱 Soil Selector</h3>
+<select onchange="soil(this.value)">
 <option>Select Soil</option>
 <option>Red Soil</option>
 <option>Black Soil</option>
 <option>Sandy Soil</option>
 </select>
-
-<div id="soilOut" class="result">Choose soil type</div>
+<p id="soilOut"></p>
 </div>
 
-<!-- Water Level -->
-<div class="section">
-<h2>💧 Water Level</h2>
-<div class="meter">
-<div class="level"></div>
-</div>
-<p>Current Level: 70%</p>
+<!-- Water -->
+<div class="card">
+<h3>💧 Water Level</h3>
+<div class="meter"><div class="level"></div></div>
+<p>Current: 70%</p>
 </div>
 
 <!-- Tips -->
-<div class="section">
-<h2>🌿 Today Farming Tips</h2>
+<div class="card">
+<h3>🌿 Smart Tips</h3>
 <ul>
-<li>Water early morning</li>
-<li>Use organic fertilizer</li>
-<li>Check pests weekly</li>
+<li>Morning watering</li>
+<li>Organic fertilizer</li>
+<li>Pest check</li>
 </ul>
 </div>
 
 </div>
 
+<div class="footerBtn">
+<a href="dashboard.html">
+<button>⬅ Back to Dashboard</button>
+</a>
+</div>
+
+</div>
+
 <script>
-function showCrop(month){
-let crop="";
-if(month=="January"||month=="February") crop="Best Crop: Groundnut";
-else if(month=="March"||month=="April") crop="Best Crop: Maize";
-else if(month=="May"||month=="June") crop="Best Crop: Cotton";
-else if(month=="July"||month=="August") crop="Best Crop: Rice";
-else if(month=="September"||month=="October") crop="Best Crop: Sugarcane";
-else crop="Best Crop: Vegetables";
-
-document.getElementById("cropResult").innerHTML=crop;
+function showCrop(m){
+let r="Best: Vegetables";
+if(m=="Jul"||m=="Aug") r="Best: Rice";
+if(m=="Mar"||m=="Apr") r="Best: Maize";
+document.getElementById("cropOut").innerHTML=r;
 }
-
-function soilResult(type){
-let res="";
-if(type=="Red Soil") res="Recommended: Millets, Groundnut";
-else if(type=="Black Soil") res="Recommended: Cotton, Sugarcane";
-else if(type=="Sandy Soil") res="Recommended: Carrot, Potato";
-document.getElementById("soilOut").innerHTML=res;
+function soil(s){
+let r="";
+if(s=="Red Soil") r="Millets, Groundnut";
+if(s=="Black Soil") r="Cotton, Sugarcane";
+if(s=="Sandy Soil") r="Carrot, Potato";
+document.getElementById("soilOut").innerHTML=r;
 }
 </script>
 
