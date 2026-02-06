@@ -4,14 +4,32 @@
 <title>Innovation Features</title>
 
 <style>
+:root{
+--bg1:#43cea2;
+--bg2:#185a9d;
+}
+
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Segoe UI,Arial;
-background:linear-gradient(135deg,#43cea2,#185a9d);
+background:linear-gradient(135deg,var(--bg1),var(--bg2));
 min-height:100vh;
 color:white;
 overflow-x:hidden;
+}
+
+/* Floating icons */
+.icon{
+position:absolute;
+font-size:30px;
+opacity:.6;
+animation:float 10s infinite linear;
+}
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
 /* Navbar */
@@ -37,7 +55,7 @@ from{opacity:0;transform:translateY(20px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-/* Feature grid */
+/* Cards */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -45,7 +63,6 @@ gap:25px;
 margin-top:30px;
 }
 
-/* Glass cards */
 .card{
 background:rgba(255,255,255,.2);
 padding:25px;
@@ -54,64 +71,58 @@ backdrop-filter:blur(10px);
 box-shadow:0 10px 25px rgba(0,0,0,.3);
 transition:.3s;
 }
-.card:hover{
-transform:translateY(-10px) scale(1.02);
-}
+.card:hover{transform:translateY(-10px) scale(1.02)}
 
-/* Inputs */
 select,input{
-padding:10px;
-border-radius:15px;
-border:none;
-outline:none;
-margin-top:10px;
+padding:10px;border-radius:15px;border:none;outline:none;margin-top:10px;
 }
 
-/* Buttons */
 button{
-padding:10px 25px;
-border:none;
-border-radius:20px;
-background:#ffeb3b;
-font-weight:bold;
-cursor:pointer;
+padding:10px 25px;border:none;border-radius:20px;
+background:#ffeb3b;font-weight:bold;cursor:pointer;
 }
 
-/* Water meter */
+/* Water */
 .meter{
 background:rgba(255,255,255,.4);
-border-radius:20px;
-height:20px;
-margin-top:10px;
-overflow:hidden;
+border-radius:20px;height:20px;margin-top:10px;overflow:hidden;
 }
-.level{
-width:70%;
-height:100%;
-background:#00e676;
-}
+.level{width:70%;height:100%;background:#00e676}
 
-/* Fake stats */
+/* Stats */
 .stats{
-display:flex;
-justify-content:center;
-gap:30px;
-margin-top:30px;
+display:flex;justify-content:center;gap:25px;margin-top:25px;
 }
 .stat{
 background:rgba(255,255,255,.2);
-padding:15px 25px;
-border-radius:20px;
+padding:15px 25px;border-radius:20px;
 }
 
-.footerBtn{
-margin-top:40px;
+/* Toast */
+#toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#00e676;
+color:#003300;
+padding:12px 25px;
+border-radius:20px;
+display:none;
 }
+
+/* Theme buttons */
+.themeBox{margin-top:20px}
 </style>
 
 </head>
 
 <body>
+
+<!-- Floating icons -->
+<div class="icon" style="left:10%;animation-duration:8s">🌾</div>
+<div class="icon" style="left:30%;animation-duration:10s">💧</div>
+<div class="icon" style="left:60%;animation-duration:9s">☁</div>
+<div class="icon" style="left:80%;animation-duration:11s">🌱</div>
 
 <nav>
 <div>🚀 Innovation Features</div>
@@ -121,31 +132,30 @@ margin-top:40px;
 <div class="container">
 
 <h1>Smart Farming Innovations 🌱</h1>
-<p>Modern tools for better agriculture</p>
 
-<!-- Fake stats -->
 <div class="stats">
 <div class="stat">🌾 Yield +25%</div>
-<div class="stat">💧 Water Save 30%</div>
-<div class="stat">📈 Profit Boost</div>
+<div class="stat">💧 Water Save</div>
+<div class="stat">📈 Profit</div>
+</div>
+
+<!-- Theme switch -->
+<div class="themeBox">
+<button onclick="green()">Green</button>
+<button onclick="blue()">Blue</button>
 </div>
 
 <div class="grid">
 
-<!-- Crop Calendar -->
 <div class="card">
 <h3>📅 Crop Calendar</h3>
-<select onchange="showCrop(this.value)">
+<select onchange="crop(this.value)">
 <option>Select Month</option>
-<option>Jan</option><option>Feb</option><option>Mar</option>
-<option>Apr</option><option>May</option><option>Jun</option>
-<option>Jul</option><option>Aug</option><option>Sep</option>
-<option>Oct</option><option>Nov</option><option>Dec</option>
+<option>Mar</option><option>Apr</option><option>Jul</option><option>Aug</option>
 </select>
 <p id="cropOut"></p>
 </div>
 
-<!-- Soil -->
 <div class="card">
 <h3>🌱 Soil Selector</h3>
 <select onchange="soil(this.value)">
@@ -157,14 +167,12 @@ margin-top:40px;
 <p id="soilOut"></p>
 </div>
 
-<!-- Water -->
 <div class="card">
 <h3>💧 Water Level</h3>
 <div class="meter"><div class="level"></div></div>
-<p>Current: 70%</p>
+<p>70%</p>
 </div>
 
-<!-- Tips -->
 <div class="card">
 <h3>🌿 Smart Tips</h3>
 <ul>
@@ -176,27 +184,48 @@ margin-top:40px;
 
 </div>
 
-<div class="footerBtn">
-<a href="dashboard.html">
-<button>⬅ Back to Dashboard</button>
-</a>
+<br>
+<button onclick="showToast()">Show Toast</button>
+
+<div style="margin-top:40px">
+<a href="dashboard.html"><button>⬅ Back</button></a>
 </div>
 
 </div>
+
+<div id="toast">Saved Successfully ✅</div>
 
 <script>
-function showCrop(m){
-let r="Best: Vegetables";
-if(m=="Jul"||m=="Aug") r="Best: Rice";
-if(m=="Mar"||m=="Apr") r="Best: Maize";
-document.getElementById("cropOut").innerHTML=r;
+function crop(m){
+let r="Vegetables";
+if(m=="Jul"||m=="Aug") r="Rice";
+if(m=="Mar"||m=="Apr") r="Maize";
+document.getElementById("cropOut").innerHTML="Best Crop: "+r;
 }
+
 function soil(s){
 let r="";
 if(s=="Red Soil") r="Millets, Groundnut";
 if(s=="Black Soil") r="Cotton, Sugarcane";
 if(s=="Sandy Soil") r="Carrot, Potato";
 document.getElementById("soilOut").innerHTML=r;
+}
+
+/* Toast */
+function showToast(){
+let t=document.getElementById("toast");
+t.style.display="block";
+setTimeout(()=>t.style.display="none",2000);
+}
+
+/* Theme */
+function green(){
+document.documentElement.style.setProperty('--bg1','#43cea2');
+document.documentElement.style.setProperty('--bg2','#185a9d');
+}
+function blue(){
+document.documentElement.style.setProperty('--bg1','#2193b0');
+document.documentElement.style.setProperty('--bg2','#6dd5ed');
 }
 </script>
 
